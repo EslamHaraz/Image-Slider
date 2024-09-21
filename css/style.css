@@ -1,0 +1,143 @@
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #0f0f0f;
+        overflow: hidden;
+    }
+
+    .parent {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -59%);
+    }
+
+    .slider-Container {
+        margin: 10px auto;
+        width: 700px;
+        height: 373px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        perspective: 1000px; /* إضافة المنظور */
+    }
+
+    .slider-Container img {
+        position: absolute;
+        opacity: 0;
+        transition: 0.6s ease-in-out;
+        transform: rotateY(90deg); /* تدوير الصور خارج الشاشة */
+        backface-visibility: hidden; /* لإخفاء الخلفية */
+        z-index: 1;
+    }
+
+    .slider-Container img.active {
+        opacity: 1;
+        transform: rotateY(0deg); /* إرجاع الصورة للموقع الطبيعي عند تفعيلها */
+    }
+
+    .slide-number {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 20px;
+        z-index: 2;
+        border-radius: 6px;
+    }
+
+    .Slide-controls {
+        width: 800px;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Slide-controls .prev,
+    .Slide-controls .next {
+        background-color: #ffbd39;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 5px;
+        width: 10%;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        user-select: none;
+        height: 30px;
+        transition: transform 0.3s ease; /* تأثير 3D على الأسهم */
+    }
+
+
+    .Slide-controls .prev.disabled,
+    .Slide-controls .next.disabled {
+        background-color: #826938;
+        cursor: no-drop;
+    }
+
+    .Slide-controls .indicators {
+        width: 50%;
+        float: left;
+    }
+
+    .Slide-controls .indicators ul {
+        list-style: none;
+        margin: 0;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .Slide-controls .indicators ul li {
+        display: inline-block;
+        background-color: #323232;
+        color: white;
+        font-weight: bold;
+        height: 28px;
+        width: 28px;
+        border-radius: 4px;
+        margin: 0 3px;
+        line-height: 28px;
+        cursor: pointer;
+        margin-bottom: 6px;
+        border-radius: 20px;
+
+    }
+
+    .Slide-controls .indicators ul li.active {
+        background-color: #ffbd39;
+        color: white;
+    }
+
+    .project-name {
+
+        color: white;
+        text-align: center;
+        text-transform: capitalize;
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .effect-box {
+        position: relative;
+        width: 700px;
+        margin: auto;
+    }
+
+@media (max-width : 768px) {
+    .parent ,    .effect-box , .slider-Container , .Slide-controls {
+        width: 100%;
+    }
+    .slider-Container img {
+        max-width: 100%;
+    }
+}
